@@ -1,0 +1,112 @@
+\documentclass[a4paper,11pt]{article}
+
+%%% LINE NUMBERS
+\usepackage{lineno}
+
+%%% random text
+\usepackage{lipsum}
+
+%%% FONTS
+\usepackage[sc]{mathpazo}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[lining]{ebgaramond}
+
+\MakeOuterQuote{"}
+
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true]{microtype}
+
+%%% FIGURES
+\usepackage{graphicx}
+\usepackage[font=small,labelfont=bf]{caption}
+
+%%% MATH
+\usepackage{amsmath} 
+
+%%% REFERENCES
+\usepackage{cite}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = black, %Colour for external hyperlinks
+  linkcolor    = black, %Colour of internal links
+  citecolor    = black %Colour of citations
+}
+
+%%% SUPPLEMENTARY MATERIAL
+\newcommand{\beginsupplement}{%
+    \renewcommand{\tablename}{Supplementary Table}
+    \setcounter{table}{0}
+    \renewcommand{\thetable}{S\arabic{table}}%
+    \setcounter{figure}{0}
+    \renewcommand{\figurename}{Supplementary Figure}
+    \renewcommand{\thefigure}{S\arabic{figure}}%
+    \setcounter{page}{1}
+    }
+
+%% MARGINS
+\topmargin -1.2cm
+\oddsidemargin 0cm 
+\textwidth 17cm 
+\textheight 23cm
+\footskip 1.2cm
+
+%%% ABSTRACT
+%The next command sets up an environment for the abstract to your paper.
+\newenvironment{sciabstract}
+    {\section*{\centering {Abstract}}
+    \begin{quote} \bf \openup .4em
+    }
+    {\end{quote} \openup -.4em}
+
+%%% TITLE
+\title{
+Title of the paper
+}
+
+%%% AUTHORS
+\author{
+    First~Last$^{1\ast}$,
+    FirstB~LastB$^{1\ast}$,
+    FirstC~LastC$^{1\dag}$\\
+}
+\date{
+    \small{$^{1}$ Affiliation number 1.}\\
+    \small{$^\ast$ Co-first authors.\\}
+    \small{$^\dag$ Corresponding author, email: FirstC.LastC@inst.ac} \vspace{0.5cm}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\baselineskip 5pt
+
+\vspace{-1cm}
+
+\maketitle
+%\vspace{1cm}
+
+\input{abstract.tex}
+
+\newpage
+\baselineskip 15pt
+\linenumbers
+
+\input{introduction.tex}
+
+\input{results.tex}
+
+\input{discussion.tex}
+
+\input{methods.tex}
+
+\input{misc.tex}
+
+\bibliographystyle{ieeetr}
+\bibliography{refs}
+
+%#####################
+%>>>>>NOTHING SHALL BE ADDED BELOW THIS LINE.<<<<<
+%#####################
+\include{supplementary}
+\clearpage
+\end{document}
